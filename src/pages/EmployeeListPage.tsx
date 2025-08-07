@@ -19,6 +19,8 @@ import {
 import AddIcon from '@mui/icons-material/Add';
 import { getEmployees } from '@/services/employee.service';
 import { Employee } from '@/types/employee';
+import { onAuthStateChanged } from 'firebase/auth'; // 1. Importe onAuthStateChanged
+import { auth } from '@/services/firebase'; // Importe a instância de auth
 
 const EmployeeListPage: React.FC = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
@@ -27,20 +29,38 @@ const EmployeeListPage: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchEmployees = async () => {
-      try {
-        const data = await getEmployees();
-        setEmployees(data);
-      } catch (err) {
-        setError('Falha ao carregar os dados dos colaboradores.');
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    // 2. Criamos um "ouvinte" para o estado de autenticação
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // 3. Somente se houver um usuário, buscamos os dados
+        console.log("Usuário autenticado, buscando colaboradores...");
+        const fetchEmployees = async () => {
+          try {
+            const data = await getEmployees();
+            setEmployees(data);
+          } catch (err) {
+            setError('Falha ao carregar os dados dos colaboradores.');
+            console.error(err); // Imprime o erro real no console para depuração
+          } finally {
+            setIsLoading(false);
+          }
+        };
 
-    fetchEmployees();
+        fetchEmployees();
+      } else {
+        // O usuário não está logado
+        console.log("Nenhum usuário autenticado.");
+        setIsLoading(false);
+        // Opcional: redirecionar para uma página de login no futuro
+      }
+    });
+
+    // 4. Função de limpeza: remove o "ouvinte" quando o componente é desmontado
+    return () => unsubscribe();
   }, []); // O array vazio [] garante que o useEffect rode apenas uma vez
 
+  // O resto do componente (if isLoading, if error, return ...) permanece o mesmo.
+  // ...
   if (isLoading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
@@ -101,9 +121,8 @@ const EmployeeListPage: React.FC = () => {
                     color={employee.status === 'active' ? 'primary' : 'error'}
                     size="small"
                     sx={{
-                        color: 'white', // Usamos branco para o texto do chip
+                        color: 'white', 
                         fontWeight: 'bold',
-                        // Usamos as cores do nosso tema!
                         backgroundColor: employee.status === 'active' ? 'status.active' : 'status.inactive',
                     }}
                   />
