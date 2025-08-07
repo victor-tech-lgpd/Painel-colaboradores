@@ -18,7 +18,7 @@ export default defineConfig({
     setupFiles: './src/setupTests.ts', 
    },
 build: {
-    chunkSizeWarningLimit: 1000, // novo limite em kB
+    chunkSizeWarningLimit: 1100, // novo limite em kB
   },
 
 })
