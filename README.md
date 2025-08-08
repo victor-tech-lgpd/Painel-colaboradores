@@ -45,10 +45,10 @@ Para rodar este projeto localmente, siga os passos abaixo.
 ### Passos
 
 1.  **Clone o repositório:**
-     ```bash
+   ```bash
    git clone https://github.com/victor-tech-lgpd/Painel-colaboradores.git
     cd Painel-colaboradores
-    ```
+   ```
 
 2.  **Instale as dependências:**
     ```bash
