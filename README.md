@@ -1,69 +1,92 @@
-# React + TypeScript + Vite
+# Sistema de Cadastro de Colaboradores - Flugo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém o código-fonte de uma aplicação web completa para o gerenciamento de colaboradores. A principal funcionalidade é um formulário de cadastro em múltiplas etapas que permite a criação de novos registros de funcionários, com dados persistidos em tempo real no Firebase.
 
-Currently, two official plugins are available:
+**[Clique aqui para ver a demonstração ao vivo](https://painel-colaboradores-git-main-victor-tech-lgpds-projects.vercel.app/colaboradores)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Funcionalidades
 
-## Expanding the ESLint configuration
+-   Cadastro de colaboradores em múltiplas etapas com barra de progresso.
+-   Listagem de todos os colaboradores cadastrados, com atualização em tempo real.
+-   Validação de formulário robusta (frontend e backend) com feedback para o usuário.
+-   Persistência de dados segura no Firebase Firestore.
+-   Autenticação anônima para proteger o acesso ao banco de dados.
+-   Interface moderna e responsiva construída com Material UI.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Tecnologias Utilizadas
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+#### **Frontend**
+-   **React 18** com **TypeScript**
+-   **Vite** como ferramenta de build
+-   **Material UI (MUI)** para componentes de UI
+-   **React Hook Form** para gerenciamento de formulários
+-   **Zod** para validação de schemas
+-   **React Router DOM** for para roteamento
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+#### **Backend & Banco de Dados**
+-   **Firebase**
+    -   **Firestore** como banco de dados NoSQL
+    -   **Firebase Authentication** para autenticação anônima
+    -   **Regras de Segurança** para proteção e validação de dados no servidor
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+#### **Testes & Deploy**
+-   **Vitest** & **React Testing Library** para testes de integração
+-   **Vercel** para implantação e CI/CD
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ Instalação e Configuração
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Para rodar este projeto localmente, siga os passos abaixo.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Pré-requisitos
+-   [Node.js](https://nodejs.org/) (versão 18 ou superior)
+-   [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
+-   Uma conta no [Firebase](https://firebase.google.com/)
+
+### Passos
+
+1.  **Clone o repositório:**
+     ```bash
+    git clone [https://github.com/victor-tech-lgpd/Painel-colaboradores.git](https://github.com/victor-tech-lgpd/Painel-colaboradores.git)
+    cd Painel-colaboradores
+    ```
+
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+
+3.  **Configure as Variáveis de Ambiente:**
+    - Crie um projeto no console do Firebase, adicione um **Aplicativo da Web** e ative o **Firestore** e a **Autenticação Anônima**.
+    - Crie um arquivo chamado `.env.local` na raiz do projeto.
+    - Copie suas credenciais da Web do Firebase para o arquivo `.env.local` com o prefixo `VITE_`:
+
+    ```
+    VITE_FIREBASE_API_KEY=sua_api_key
+    VITE_FIREBASE_AUTH_DOMAIN=seu_auth_domain
+    VITE_FIREBASE_PROJECT_ID=seu_project_id
+    VITE_FIREBASE_STORAGE_BUCKET=seu_storage_bucket
+    VITE_FIREBASE_MESSAGING_SENDER_ID=seu_Messaginger_id
+    VITE_FIREBASE_APP_ID=seu_app_id
+    ```
+
+## 📜 Scripts Disponíveis
+
+-   **Para iniciar o servidor de desenvolvimento:**
+    ```bash
+    npm run dev
+    ```
+    A aplicação estará disponível em `http://localhost:5173`.
+
+-   **Para construir a aplicação para produção:**
+    ```bash
+    npm run build
+    ```
+    Os arquivos otimizados serão gerados no diretório `dist/`.
+
+-   **Para executar os testes:**
+    ```bash
+    npm run test
+    ```
+
+---
+Autor: [Victor Balleiro viana]
