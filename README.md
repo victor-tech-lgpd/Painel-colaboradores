@@ -46,7 +46,7 @@ Para rodar este projeto localmente, siga os passos abaixo.
 
 1.  **Clone o repositório:**
      ```bash
-    git clone [https://github.com/victor-tech-lgpd/Painel-colaboradores.git](https://github.com/victor-tech-lgpd/Painel-colaboradores.git)
+   git clone https://github.com/victor-tech-lgpd/Painel-colaboradores.git
     cd Painel-colaboradores
     ```
 
