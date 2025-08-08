@@ -2,7 +2,7 @@
 
 Este repositório contém o código-fonte de uma aplicação web completa para o gerenciamento de colaboradores. A principal funcionalidade é um formulário de cadastro em múltiplas etapas que permite a criação de novos registros de funcionários, com dados persistidos em tempo real no Firebase.
 
-**[Clique aqui para ver a demonstração ao vivo](https://painel-colaboradores-git-main-victor-tech-lgpds-projects.vercel.app/colaboradores)**
+**[Clique aqui para ver a demonstração ao vivo](https://painel-colaboradores-git-main-victor-tech-lgpds-projects.vercel.app?_vercel_share=fpHNCjeSgYwuZ94ZJV43q2HNLsGpGeAl)**
 
 ## ✨ Funcionalidades
 
